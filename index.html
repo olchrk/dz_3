@@ -1,0 +1,62 @@
+<html>
+    <head>
+<style>
+    #animation {
+        height: 200px;
+        padding-bottom: 10px;
+        margin-left: 40%;     
+    }   
+    .box {
+          margin-left: 40%; 
+    }
+    button {
+        width: 100px;
+    }   
+</style> 
+    </head>
+<body>
+<script>
+    var i = 0;
+    var svich=true;
+    
+    var images = new Array();
+    
+    images[0]=new Image();
+    images[1]=new Image();
+    images[2]=new Image();
+    
+    images[0] = '111.png';
+    images[1] = '222.png';
+    images[2] = '333.png';
+    
+    function viewImages() {
+        if(svich==true) {
+        document.getElementById("animation").src = images[i]; 
+        i++;
+        if (i == images.length) {
+            i = 0;
+        }
+        setTimeout("viewImages()",1000);
+}  
+}
+ function img_start()   
+{
+svich=true; 
+viewImages(); 
+}
+
+function img_stop()
+{
+svich=false;  
+}
+    
+</script>
+<img src="" id="animation">
+<br>
+<div class="box">
+<button id="stop" onclick="img_stop()">Stop</button>
+<button id="start" onclick="img_start()">Start</button>
+</div>
+<script>viewImages() </script>  
+</body>
+</html>
