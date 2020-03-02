@@ -16,47 +16,42 @@
     </head>
 <body>
 <script>
-    var i = 0;
-    var svich=true;
-    
+    var i = 0;    
     var images = new Array();
-    
-    images[0]=new Image();
-    images[1]=new Image();
-    images[2]=new Image();
     
     images[0] = '111.png';
     images[1] = '222.png';
     images[2] = '333.png';
     
     function viewImages() {
-        if(svich==true) {
         document.getElementById("animation").src = images[i]; 
         i++;
         if (i == images.length) {
             i = 0;
         }
-        setTimeout("viewImages()",1000);
-}  
-}
- function img_start()   
-{
-svich=true; 
-viewImages(); 
-}
+    }
 
+let contr;
+
+ function img_start()  
+{
+clearInterval(contr);
+contr = setInterval(viewImages,1000);
+};
+ 
 function img_stop()
 {
-svich=false;  
-}
-    
+    clearInterval(contr);
+    contr = null;
+};    
+
 </script>
 <img src="" id="animation">
 <br>
 <div class="box">
 <button id="stop" onclick="img_stop()">Stop</button>
 <button id="start" onclick="img_start()">Start</button>
+<script> viewImages() </script>  
 </div>
-<script>viewImages() </script>  
 </body>
 </html>
